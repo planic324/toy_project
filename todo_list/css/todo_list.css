@@ -89,7 +89,7 @@ input[type="text"]{
 input[type="text"]:focus{
     color: #333;
 }
-label[for='new-taxk']{
+label[for='new-task']{
     display: block;
     margin: 0 0 20px;
 }
