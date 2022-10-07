@@ -10,4 +10,21 @@ const createNewTaskElement = function(taskString) {
     let editInput = document.createElement("input");
     let editButton = document.createElement("button");
     let deleteButton = document.createElement("button");
+
+    checkBox.type = "checkbox";
+    editInput.type = "text";
+    
+    editButton.innerText = "Edit";
+    editButton.className = "edit"
+    deleteButton.innerText = "Delete";
+    deleteButton.className = "delete";
+
+    label.innerText = "taskString";
+
+    listItem.appendChild(checkBox);
+    listItem.appendChild(label);
+    listItem.appendChild(editInput);
+    listItem.appendChild(editButton);
+    listItem.appendChild(deleteButton);
+    return listItem;
 }
