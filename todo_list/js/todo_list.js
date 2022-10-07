@@ -31,5 +31,4 @@ const createNewTaskElement = function(taskString) {
 
 const addTask = function() {
     console.log("Add task....");
-    let 
 }
