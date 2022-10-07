@@ -28,3 +28,8 @@ const createNewTaskElement = function(taskString) {
     listItem.appendChild(deleteButton);
     return listItem;
 }
+
+const addTask = function() {
+    console.log("Add task....");
+    let 
+}
