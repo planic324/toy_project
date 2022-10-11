@@ -4,12 +4,12 @@ const incompleteTasksHoler = document.getElementById("incomplete-tasks");
 const completeTasksHoler = document.getElementById("completed-tasks");
 
 const createNewTaskElement = function(taskString) {
-    const listItem = document.createElement("li");
-    const checkBox = document.createElement("input");
-    const label = document.createElement("label");
-    const editInput = document.createElement("input");
-    const editButton = document.createElement("button");
-    const deleteButton = document.createElement("button");
+    let listItem = document.createElement("li");
+    let checkBox = document.createElement("input");
+    let label = document.createElement("label");
+    let editInput = document.createElement("input");
+    let editButton = document.createElement("button");
+    let deleteButton = document.createElement("button");
 
     checkBox.type = "checkbox";
     editInput.type = "text";
@@ -32,7 +32,7 @@ const createNewTaskElement = function(taskString) {
 const addTask = function() {
     console.log("Add task....");
 
-    const listItem = createNewTaskElement(taskInput.value);
+    let listItem = createNewTaskElement(taskInput.value);
     incompleteTasksHoler.appendChild(listItem);
     bindTaskEvents(listItem, taskCompleted);
     taskInput.value = "";
@@ -42,10 +42,10 @@ const addTask = function() {
 const editTask = function() {
     console.log("Edit task...")
 
-    const listItem = this.parentNode;
-    const editInput = listItem.querySelector("input[type=text");
-    const label = listItem.querySelector("label");
-    const containsClass = listItem.classList.contains("editMOde");
+    let listItem = this.parentNode;
+    let editInput = listItem.querySelector("input[type=text");
+    let label = listItem.querySelector("label");
+    let containsClass = listItem.classList.contains("editMOde");
 
     if (containsClass){
         label.innerText = editInput.value;
