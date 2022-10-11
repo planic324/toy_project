@@ -4,12 +4,12 @@ const incompleteTasksHoler = document.getElementById("incompleted-tasks");
 const completeTasksHoler = document.getElementById("completed-tasks");
 
 const createNewTaskElement = function(taskString) {
-    let listItem = document.createElement("li");
-    let checkBox = document.createElement("input");
-    let label = document.createElement("label");
-    let editInput = document.createElement("input");
-    let editButton = document.createElement("button");
-    let deleteButton = document.createElement("button");
+    const listItem = document.createElement("li");
+    const checkBox = document.createElement("input");
+    const label = document.createElement("label");
+    const editInput = document.createElement("input");
+    const editButton = document.createElement("button");
+    const deleteButton = document.createElement("button");
 
     checkBox.type = "checkbox";
     editInput.type = "text";
@@ -31,4 +31,15 @@ const createNewTaskElement = function(taskString) {
 
 const addTask = function() {
     console.log("Add task....");
+    const listItem = this.parentNode;
+    const editInput = listItem.querySelector("input[type='text']");
+    const label = listItem.querySelector("label");
+    const containsClass = listItem.classList.contains("editMOde");
+
+    if (containsClass){
+        label.innerText = editInput.value;
+    } else{
+        editInput.value = label.innerText;
+    }
+    listItem.classList.toggle("editMode");
 }
