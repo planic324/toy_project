@@ -1,6 +1,6 @@
 const taskInput = document.getElementById("new-task");
 const addButton = document.getElementsByTagName("button")[0];
-const incompleteTasksHoler = document.getElementById("incompleted-tasks");
+const incompleteTasksHoler = document.getElementById("incomplete-tasks");
 const completeTasksHoler = document.getElementById("completed-tasks");
 
 const createNewTaskElement = function(taskString) {
@@ -31,8 +31,19 @@ const createNewTaskElement = function(taskString) {
 
 const addTask = function() {
     console.log("Add task....");
+
+    const listItem = createNewTaskElement(taskInput.value);
+    incompleteTasksHoler.appendChild(listItem);
+    bindTaskEvents(listItem, taskCompleted);
+    taskInput.value = "";
+    
+}
+
+const editTask = function() {
+    console.log("Edit task...")
+
     const listItem = this.parentNode;
-    const editInput = listItem.querySelector("input[type='text']");
+    const editInput = listItem.querySelector("input[type=text");
     const label = listItem.querySelector("label");
     const containsClass = listItem.classList.contains("editMOde");
 
