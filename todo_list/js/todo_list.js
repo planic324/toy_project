@@ -19,7 +19,7 @@ const createNewTaskElement = function(taskString) {
     deleteButton.innerText = "Delete";
     deleteButton.className = "delete";
 
-    label.innerText = "taskString";
+    label.innerText = taskString;
 
     listItem.appendChild(checkBox);
     listItem.appendChild(label);
@@ -43,7 +43,7 @@ const editTask = function() {
     console.log("Edit task...")
 
     let listItem = this.parentNode;
-    let editInput = listItem.querySelector("input[type=text");
+    let editInput = listItem.querySelector("input[type=text]");
     let label = listItem.querySelector("label");
     let containsClass = listItem.classList.contains("editMOde");
 
