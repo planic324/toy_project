@@ -1,5 +1,7 @@
 const taskInput = document.getElementById("new-task");
 const addButton = document.getElementsByTagName("button")[0];
+const editButton = document.getElementsByTagName("button")[1];
+const deleteButton = document.querySelector('delete');
 const incompleteTasksHoler = document.getElementById("incomplete-tasks");
 const completeTasksHoler = document.getElementById("completed-tasks");
 
@@ -54,3 +56,6 @@ const editTask = function() {
     }
     listItem.classList.toggle("editMode");
 }
+
+addButton.onclick = addTask;
+editButton.onclick = editTask;
