@@ -34,8 +34,12 @@ document.addEventListener('DOMContentLoaded', () =>{
     // 새로운 task
     const addTask = function() {
         console.log("추가중")
+        if(taskInput.value.length < 1){
+            alert('텍스트를 입력해주세요')
+            return
+        } 
         let listItem = createNewTaskElement(taskInput.value);
-        incompleteTasksHoler.appendChild(listItem);
+        incompleteTasksHolder.appendChild(listItem);
         bindTaskEvents(listItem, taskCompleted);
 
         taskInput.value = "";
