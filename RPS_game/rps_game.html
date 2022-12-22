@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no,target-densitydpi=medium-dpi">
+    <title>Toy project :: RPS GAME(가위바위보)</title>
+    <link rel="stylesheet" type="text/css" href="css/rps_game.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css">
+    <!-- Swiper JS -->
+    
+</head>
+<body>
+    <div class="header">
+        <h1>RPS GAME</h1>
+        <div class="mySwiper">
+            <div class="banner swiper-wrapper">
+                <div class="swiper-slide">가위바위보 게임입니다:)</div>
+                <div class="swiper-slide">사용언어 : HTML, CSS, Javascript</div>
+                <div class="swiper-slide">제작자 : planic</div>
+            </div>    
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="gameBox">
+            <div class="workPlace">
+                <p class="life">
+                    <span class="ico_life">&hearts;</span>
+                    <span class="text">0</span>
+                </p>
+            </div>
+            <div class="mainBox">
+                <div class="couontBox">
+                    <span class="text">PC : <em class="pc_count">0</em> VS Player : <em class="pc_count">0</em></span>
+                </div>
+                <div class="imgBox">
+                    <img src="img/paper.png" alt="">
+                    <!-- <img src="img/scissors.png" alt=""> -->
+                    <!-- <img src="img/rock.png" alt=""> -->
+                </div>
+                <div class="controlBox">
+                    <button type="button" class="btn_scissors">가위</button>
+                    <button type="button" class="btn_rock">바위</button>
+                    <button type="button" class="btn_paper">보</button>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script src="js/rps_game.js" defer></script>
+<script>
+    
+</script>
+</html>

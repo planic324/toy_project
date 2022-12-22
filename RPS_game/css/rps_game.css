@@ -1,0 +1,120 @@
+
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,img,button,select{margin:0;padding:0}
+body,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,button{font-family:'Nanum Square','돋움',Dotum,Helvetica,'Apple SD Gothic Neo',sans-serif}
+body{position:relative;}
+img,fieldset{border:0;vertical-align:top}
+a{color:#1a1a1a}
+em,address{font-style:normal}
+ul,ol,li{list-style:none}
+label,button{cursor:pointer}
+input::-ms-clear{display:none}
+.blind{position:absolute !important;clip:rect(0 0 0 0) !important;width:1px !important;height:1px !important;margin:-1px !important;overflow:hidden !important}
+.table thead.blind{position:static;font-size:0} /* 테이블 thead blind 버그해결 */
+.clearbx:after,.clearfix:after{content:'';clear:both;display:table}
+.ellipsis{overflow:hidden;white-space:nowrap;word-break:break-all;text-overflow:ellipsis}
+.no_ellipsis{white-space:normal !important}
+.no_ellipsis2{white-space:normal !important;text-overflow:clip !important;}
+.us_none{-webkit-user-select:none !important;-moz-user-select:none !important;-ms-user-select:none !important;user-select:none !important}
+.mw_auto{min-width:auto}
+.w_auto{width:auto !important}
+.of_hidden{overflow:hidden !important}
+.of_visible{overflow:visible !important}
+input:disabled{-webkit-text-fill-color:#8d8d8d;opacity:1}
+iframe{overflow:hidden;margin:0;padding:0;border:0}
+
+.header{
+    display: block;
+    width: 100%;
+    position: relative;
+    background: #000;
+    padding: 1vw 0;
+    overflow: hidden;
+}
+.header h1{
+    display: block;
+    text-align: center;
+    font-size: 1.1458vw;
+    margin-bottom: 1vw;
+    line-height: 1.2;
+    color: #fff;
+}
+.header .banner{
+    display: flex;
+    width: 100%;    
+}
+.header .banner > div{
+    font-size: 0.8333vw;
+    line-height: 1.2;
+    padding: 0.6813vw;
+    background-color: #fff;
+    text-align: center;
+}
+.content{
+    position: relative;
+    display: block;
+}
+.gameBox{
+    display: block;
+    display: block;
+    min-width: 320px;
+    width: 40%;
+    margin: 2vw auto;
+    border: 1px solid #777;
+    border-radius: 12px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.gameBox .workPlace{
+    display: block;
+    padding: 1vw;
+    background-color: #000;
+}
+.gameBox .workPlace .life{
+    display: flex;
+    font-size: 1.8vw;
+    line-height: 1.2;
+    color: #fff;
+    font-weight: 900;
+}
+.gameBox .workPlace .life .ico_life{
+    margin-right: 2px;
+    color: #ff0000;
+}
+
+.gameBox .mainBox .couontBox{
+    display: block;
+    font-size: 2vw;
+    line-height: 1.2;
+    text-align: center;
+    margin-bottom: 1vw;
+    margin: 2vw 0 4vw;
+}
+.gameBox .mainBox .imgBox{
+    width: 30%;
+    margin: 0 auto;
+}
+.gameBox .mainBox .imgBox > img{
+    display: block;
+    width: 100%;
+}
+.gameBox .mainBox .controlBox{
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin: 3vw 0;
+}
+.gameBox .mainBox .controlBox button{
+    display: block;
+    min-width: 20%;
+    padding: 1vw 2vw;
+    border: 1px solid #212121;
+    border-radius: 4vw;
+    background: none;
+    font-size: 1vw;
+    line-height: 1.2;
+    font-weight: 900;
+}
+.gameBox .mainBox .controlBox button:hover{
+    background-color: #212121;
+    color: #fff;
+}
