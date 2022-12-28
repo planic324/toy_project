@@ -78,10 +78,11 @@ document.addEventListener('DOMContentLoaded', () =>{
 
     let closeTimerState = 0;
 
+    // 버튼 맵핑 작업
     buttonBox.addEventListener("click", function(e){
       let playerSelection = "";
 
-      // 버튼 맵핑 작업
+      
       if (e.target === buttonScissors){
         playerSelection = 0;
         console.log('0')
@@ -127,6 +128,85 @@ document.addEventListener('DOMContentLoaded', () =>{
           console.log('플레이어 패배')
           return 0;
       }
+    }
+
+    // 대진 결과를 화면에 출력하는 함수
+    const modal = document.getElementsByClassName("modal")[0];
+    const modalTitle = document.getElementsByClassName("modal__content-title")[0];
+
+    const playerScoreItem = document.getElementById("score-player");
+    const pcScoreItem = document.getElementById("score-pc");
+
+    function showMatchResult(result, player, pc) {
+        // 화면에 점수 갱신
+        if (result !== 1 || result !== null) {
+            calculateScore(result);
+        }
+
+        // 남은 기회 갱신 (이기면 +1, 지면 -1)
+        if (result === 0) {
+            playerLife -= 1;
+        } else if (result === 2) {
+            playerLife += 1;
+        }
+        playerLifeItem.innerText = playerLife;
+
+        // 모달에 대진 결과 대입
+        if (playerLife > 0) {
+            showRoundResult(result, player, pc);
+        } else {
+            showGameResult();
+        }
+    }
+
+    // 한 라운드 종료 시 출력 문구
+    function showRoundResult(result, player, pc) {
+        let colorList = ["color-red", "color-green", "color-blue"];
+        let heartList = ["./img/common/broken-heart.png", "", "./img/common/heart.png"]
+        let resultList = ["패배", "무승부", "승리"];
+        let rpsList = ["✌", "✊", "✋"];
+
+        modalTitle.innerHTML = `
+            <h1 class="modal__content-title--result ${colorList[result]}">
+                ${resultList[result]}!<br />
+            </h1>
+            <figure class="modal__content-title--result-life">
+                <img class="modal__content-title--result-life-img" src="${heartList[result]}" onerror="this.style.display='none'" />
+            </figure>
+            <p class="modal__content-title--desc">
+                PC : ${rpsList[pc]}<br />
+                Player : ${rpsList[player]}
+            </p>
+        `;
+
+        const resultLifeItem = document.getElementsByClassName("modal__content-title--result-life")[0];
+
+        resultLifeItem.style.animation = "blinkingEffect 400ms 6 alternate";
+
+        modal.classList.add("show");
+    }
+
+    // 게임 종료 시 출력 문구
+    function showGameResult() {
+        time = 10;
+
+        modalTitle.innerHTML = `
+        <h1 class="modal__content-title--result color-red">
+            게임 종료!
+        </h1>
+        <span class="modal__content-title--score">
+            점수 : <strong>${playerScore}</strong>점
+        </span>
+        <p class="modal__content-title--desc">
+            총 ${count}번의 대결 동안<br />
+            <span class="color-blue">${winCount}번</span>의 승리<br />
+            <span class="color-red">${loseCount}번</span>의 패배<br />
+            <span class="color-green">${drawCount}번</span>의 무승부가<br />
+            있었습니다.
+        </p>
+        `;
+
+        modal.classList.add("show");
     }
 
     
