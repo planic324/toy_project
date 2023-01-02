@@ -93,10 +93,11 @@ document.addEventListener('DOMContentLoaded', () =>{
         playerSelection = 2; 
         console.log('2')
       } else {
-        return;
+          return;
       }
+
       rockPaperSissors(playerSelection);
-    })
+    });
 
     // 가위 바위 보 메인 계산 함수
     function rockPaperSissors(playerSelection) {
@@ -108,6 +109,9 @@ document.addEventListener('DOMContentLoaded', () =>{
 
       // 대진 결과 판단 (사용자 패 : 0, 무 : 1, 사용자 승 : 2)
       let result = gameCheckResult(playerSelection, pcSelection);
+
+      // 대진 결과 화면에 출력
+      showMatchResult(result, playerSelection, pcSelection);
 
     }
 
@@ -129,15 +133,102 @@ document.addEventListener('DOMContentLoaded', () =>{
           return 0;
       }
     }
+
+    // 대진 결과를 화면에 출력하는 함수
+    const modal = document.getElementsByClassName("modal")[0];
+    const modalTitle = document.getElementsByClassName("modal__content-title")[0];
+
+    const playerScoreItem = document.getElementById("score-player");
+    const pcScoreItem = document.getElementById("score-pc");
+
+    function showMatchResult(result, player, pc) {
+        // 화면에 점수 갱신
+        if (result !== 1 || result !== null) {
+            calculateScore(result);
+        }
+
+        // 남은 기회 갱신 (이기면 +1, 지면 -1)
+        if (result === 0) {
+            playerLife -= 1;
+        } else if (result === 2) {
+            playerLife += 1;
+        }
+        playerLifeItem.innerText = playerLife;
+
+        // 모달에 대진 결과 대입
+        if (playerLife > 0) {
+            showRoundResult(result, player, pc);
+        } else {
+            showGameResult();
+        }
+    }
+
+    // 한 라운드 종료 시 출력 문구
+    function showRoundResult(result, player, pc) {
+        let colorList = ["color-red", "color-green", "color-blue"];
+        let resultList = ["패배", "무승부", "승리"];
+        let rpsList = ["✌", "✊", "✋"];
+
+        modalTitle.innerHTML = `
+            <h1 class="modal__content-title--result ${colorList[result]}">
+                ${resultList[result]}!<br />
+            </h1>
+            <p class="modal__content-title--desc">
+                PC : ${rpsList[pc]}<br />
+                Player : ${rpsList[player]}
+            </p>
+        `;
+
+        const resultLifeItem = document.getElementsByClassName("modal__content-title--result-life")[0];
+        // resultLifeItem.style.animation = "blinkingEffect 400ms 6 alternate";
+        modal.classList.add("show");
+    }
+
+    // 게임 종료 시 출력 문구
+    function showGameResult() {
+        time = 10;
+
+        modalTitle.innerHTML = `
+        <h1 class="modal__content-title--result color-red">
+            게임 종료!
+        </h1>
+        <span class="modal__content-title--score">
+            점수 : <strong>${playerScore}</strong>점
+        </span>
+        <p class="modal__content-title--desc">
+            총 ${count}번의 대결 동안<br />
+            <span class="color-blue">${winCount}번</span>의 승리<br />
+            <span class="color-red">${loseCount}번</span>의 패배<br />
+            <span class="color-green">${drawCount}번</span>의 무승부가<br />
+            있었습니다.
+        </p>
+        `;
+
+        modal.classList.add("show");
+    }
+    // 점수 계산 후 화면에 갱신하는 함수
+    function calculateScore(result) {
+        if (result === 2) {
+            playerScore += 10;
+            playerScoreItem.innerText = playerScore;
+        } else if (result === 0) {
+            pcScore += 10;
+            pcScoreItem.innerText = pcScore;
+        }
+    }
     
     
     // Control Box
-    
+    const playerLifeItem = document.getElementById("player-life");
     const pcImage = document.getElementById("pc-image"); // 이미지 변경되는 박스 타겟팅
 
     window.onload = function(){
       timer = setInterval(changePcSelection, speed);
     }
+
+    playerLifeItem.innerText = playerLife;
+    playerScoreItem.innerText = playerScore;
+    pcScoreItem.innerText = pcScore;
     
 
 })

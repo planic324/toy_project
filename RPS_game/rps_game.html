@@ -27,12 +27,12 @@
             <div class="workPlace">
                 <p class="life">
                     <span class="ico_life">&hearts;</span>
-                    <span class="text">0</span>
+                    <span id="player-life" class="text">0</span>
                 </p>
             </div>
             <div class="mainBox">
                 <div class="couontBox">
-                    <span class="text">PC : <em class="pc_count">0</em> VS Player : <em class="pc_count">0</em></span>
+                    <span class="text">PC : <em id="score-pc" class="game__score-item pc">0</em> VS Player : <em id="score-player" class="game__score-item player">0</em></span>
                 </div>
                 <div class="imgBox">
                     <img src="img/paper.png" alt="컴퓨터 선택 : 보" id="pc-image">
@@ -48,10 +48,20 @@
         <div class="modal modal-layer">
             <div class="modal__content">
                 <div class="modal__content-title">
+                    <h1 class="modal__content-title--result color-blue">
+                        승리!<br>
+                    </h1>
+                    <figure class="modal__content-title--result-life" style="animation: 400ms ease 0s 6 alternate none running blinkingEffect;">
+                        <img class="modal__content-title--result-life-img" src="" onerror="this.style.display='none'">
+                    </figure>
+                    <p class="modal__content-title--desc">
+                        PC : ✊<br>
+                        Player : ✋
+                    </p>
                 </div>
         
                 <p class="modal__content-guide">
-                    <span id="time-remain"></span>초 뒤 자동으로 닫힙니다.
+                    <span id="time-remain">0</span>초 뒤 자동으로 닫힙니다.
                 </p>
         
                 <button class="white-button modal__content-close-button" type="button">
