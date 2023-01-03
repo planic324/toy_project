@@ -122,6 +122,9 @@ iframe{overflow:hidden;margin:0;padding:0;border:0}
     display: none;
     letter-spacing: -0.04em;
 }
+.modal.show{
+    display: block;
+}
 
 .modal-layer {
     position: fixed;

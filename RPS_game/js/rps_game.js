@@ -216,6 +216,19 @@ document.addEventListener('DOMContentLoaded', () =>{
             pcScoreItem.innerText = pcScore;
         }
     }
+
+    // 5초 되기 전에 사용자가 수동으로 모달 창을 종료하는 경우
+    const modalCloseButton = document.getElementsByClassName("modal__content-close-button")[0];
+    const modalLayer = document.getElementsByClassName("modal-layer")[0];
+
+    modal.addEventListener('click', function(e) {
+        if (e.target === modalLayer || e.target === modalCloseButton) {
+            modal.classList.remove("show");
+            
+        }
+    });
+
+    
     
     
     // Control Box
