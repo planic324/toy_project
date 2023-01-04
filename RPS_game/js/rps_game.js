@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () =>{
       return parseInt(Math.random() * 3); // (max - min) + min : max는 3, min은 0
     }
 
-    // 게임을 시작/재시작 하는 함수
+    // 게임을 시작
     function changePcSelection() {
       // 생성된 난수를 PC의 선택 값으로 설정
       // 이전 값과 동일하지 않은 경우에만 PC가 선택하도록 구현
@@ -69,14 +69,11 @@ document.addEventListener('DOMContentLoaded', () =>{
       }
     }
     
-
     // 버튼을 눌러서 게임하는 방법
     const buttonBox = document.getElementsByClassName("controlBox")[0] // 컨트롤 박스
     const buttonScissors = document.getElementById("buttonScissors") //가위
     const buttonRock = document.getElementById("buttonRock") //바위
     const buttonPaper = document.getElementById("buttonPaper") //보
-
-    let closeTimerState = 0;
 
     // 버튼 맵핑 작업
     buttonBox.addEventListener("click", function(e){
@@ -113,6 +110,8 @@ document.addEventListener('DOMContentLoaded', () =>{
       // 대진 결과 화면에 출력
       showMatchResult(result, playerSelection, pcSelection);
 
+      // 게임 재시작
+      restartGame()
     }
 
     // 대진 결과 판단 (가위 : 0 // 바위 : 1 // 보 : 2)
@@ -224,15 +223,29 @@ document.addEventListener('DOMContentLoaded', () =>{
     modal.addEventListener('click', function(e) {
         if (e.target === modalLayer || e.target === modalCloseButton) {
             modal.classList.remove("show");
-            
         }
+        restartGame();
     });
 
-    
-    
+    // 게임을 재시작 하는 함수
+    function restartGame(){
+        clearInterval();
+
+        // 화면 초기화
+        playerLifeItem.innerText = playerLife;
+        playerScoreItem.innerText = playerScore;
+        pcScoreItem.innerText = pcScore;
+
+        // 게임 재시작
+        timer = setInterval(changePcSelection, speed);
+
+        // 컴퓨터 마지막 선택 값 재설정
+        changePcSelection();
+        
+    }
     
     // Control Box
-    const playerLifeItem = document.getElementById("player-life");
+    const playerLifeItem = document.getElementById("player-life"); // 남은 생명 수
     const pcImage = document.getElementById("pc-image"); // 이미지 변경되는 박스 타겟팅
 
     window.onload = function(){
