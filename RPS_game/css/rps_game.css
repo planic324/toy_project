@@ -21,7 +21,13 @@ input::-ms-clear{display:none}
 .of_visible{overflow:visible !important}
 input:disabled{-webkit-text-fill-color:#8d8d8d;opacity:1}
 iframe{overflow:hidden;margin:0;padding:0;border:0}
-
+html, body{
+    height: 100%;
+}
+body{
+    display: flex;
+    flex-direction: column;
+}
 .header{
     display: block;
     width: 100%;
@@ -51,14 +57,16 @@ iframe{overflow:hidden;margin:0;padding:0;border:0}
 }
 .content{
     position: relative;
-    display: block;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
 }
 .gameBox{
     display: block;
-    display: block;
     min-width: 320px;
     width: 40%;
-    margin: 2vw auto;
+    margin: 0 auto;
     border: 1px solid #777;
     border-radius: 12px;
     box-sizing: border-box;
@@ -140,6 +148,7 @@ iframe{overflow:hidden;margin:0;padding:0;border:0}
     position: fixed;
     top: 50%;
     left: 50%;
+    max-width: 400px;
     transform: translate(-50%, -50%);
     display: flex;
     flex-flow: column;
@@ -205,6 +214,14 @@ iframe{overflow:hidden;margin:0;padding:0;border:0}
 }
 
 .modal__content-close-button {
-    width: 100%;
-    font-size: 14px;
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+    border: 1px solid #000;
+    border-radius: 0.3042vw;
+    background: #000;
+    color: #fff;
+    font-size: 1.2292vw;
+    line-height: 1.2;
+    padding: 0.7208vw 0;
 }
