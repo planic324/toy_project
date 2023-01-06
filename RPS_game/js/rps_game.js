@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () =>{
     });
 
     // 게임 기본 스피드 0.3초로 설정
+    
+    let speed = 300;
 
     // 게임 회차 및 승패 정보 저장
     let count = 0;
@@ -24,11 +26,9 @@ document.addEventListener('DOMContentLoaded', () =>{
 
     let playerLife = 3;
 
-    let lastPcSelection = "";
-    let pcSelection = "";
-
     let timer = 0;
-    let speed = 300;
+    let lastPcSelection = "";
+    let pcSelection = "";    
 
     // PC를 랜덤으로 뽑아주는 것
     function getRandom() {
@@ -112,6 +112,9 @@ document.addEventListener('DOMContentLoaded', () =>{
 
       // 게임 재시작
       restartGame()
+
+      // 모달 종료 시 게임 재시작
+      restartGameAfterExitModal();
     }
 
     // 대진 결과 판단 (가위 : 0 // 바위 : 1 // 보 : 2)
@@ -159,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () =>{
             showRoundResult(result, player, pc);
         } else {
             showGameResult();
+
         }
     }
 
@@ -182,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () =>{
         // resultLifeItem.style.animation = "blinkingEffect 400ms 6 alternate";
         modal.classList.add("show");
     }
-
     // 게임 종료 시 출력 문구
     function showGameResult() {
         time = 10;
@@ -216,6 +219,25 @@ document.addEventListener('DOMContentLoaded', () =>{
         }
     }
 
+    // 5초 동안 결과를 출력하는 모달 창이 닫히면 게임을 재시작 하는 함수
+    const timeRemain = document.getElementById("time-remain");
+
+    let closeTimer = 0;
+    let time = 5;
+
+    function restartGameAfterExitModal() {
+        timeRemain.innerText = time;
+
+        closeTimer = setInterval(() => {
+            timeRemain.innerText = --time;
+
+            if (time === 0) {
+                modal.classList.remove("show");
+                restartGame();
+            }
+        }, 1000);
+    }
+
     // 5초 되기 전에 사용자가 수동으로 모달 창을 종료하는 경우
     const modalCloseButton = document.getElementsByClassName("modal__content-close-button")[0];
     const modalLayer = document.getElementsByClassName("modal-layer")[0];
@@ -229,7 +251,10 @@ document.addEventListener('DOMContentLoaded', () =>{
 
     // 게임을 재시작 하는 함수
     function restartGame(){
-        clearInterval();
+        clearInterval(closeTimer);
+
+        // time 초기화
+        time = 5;
 
         // 화면 초기화
         playerLifeItem.innerText = playerLife;
