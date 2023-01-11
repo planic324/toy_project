@@ -266,6 +266,11 @@ document.addEventListener('DOMContentLoaded', () =>{
 
         // 컴퓨터 마지막 선택 값 재설정
         changePcSelection();
+
+        // 게임 회차에 따라 스피드 빠르게 조절 (20회차 이상 부턴 속도 고정)
+        if (count <= 20) {
+            speed = speed - 10;
+        }
         
     }
     
